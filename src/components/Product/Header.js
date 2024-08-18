@@ -8,8 +8,11 @@ const Header = ({ onSearch }) => {
   // Select cart items from Redux store
   const cartItems = useSelector(state => state.product.cartItems);
 
+  // Calculate total quantity of items in the cart
+  const totalQuantity = cartItems.reduce((total, item) => total + item.quantity, 0);
+
   return (
-    <header className="bg-white shadow-md p-4 flex justify-between items-center w-full">
+    <header className="bg-white shadow-md p-4 flex justify-between fixed z-20 items-center w-full">
       <h1 className="text-xl font-bold text-gray-800">Shop</h1>
       <div className="flex items-center space-x-4">
         <input
@@ -21,7 +24,7 @@ const Header = ({ onSearch }) => {
         <div className="relative cart-icon" onClick={()=>navigate('/cart-item')}>
           {/* Cart Icon with Item Count */}
           <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-            {cartItems && cartItems.length}
+            {totalQuantity}
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
