@@ -53,6 +53,14 @@ This project is a simple e-commerce application that consists of two main pages:
 
 - **Checkout Button:**
   - A checkout button is available to simulate the checkout process or redirect to a checkout page.
+ 
+## Navigation
+
+- **Redirect to Cart Page:**
+  - Clicking on the cart icon in the header will redirect users to the Cart Listing Page, where they can view and manage their selected products.
+  - ![image](https://github.com/user-attachments/assets/0a83872d-70ab-460e-8d59-79a48f93a2b5)
+
+
 
 ## State Management with Redux
 
