@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# E-commerce Product Listing and Cart Management
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a simple e-commerce application that consists of two main pages: a Product Listing Page and a Cart Page. The application is built using ReactJS and styled with Tailwind CSS. The key features include a paginated product grid, product details modal, and a dynamic cart management system.
+![image](https://github.com/user-attachments/assets/132a9935-7150-4de0-b8b2-2b9ed4c540fe)
 
-## Available Scripts
 
-In the project directory, you can run:
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 1. Product Listing Page
+- **Pagination-Based Grid Layout:**
+  - The product listing page displays products in a grid layout with 12 items per page.
+  - Users can navigate between pages to view more products.
+  - ![image](https://github.com/user-attachments/assets/f89074ce-8090-472e-bec4-b2e7bceaef69)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Product Card:**
+  - Each product card displays an image, name, and price of the product.
+  - Clicking on the product image opens a modal that shows detailed information about the product.
+  - The product card also includes an "Add to Cart" button.
+  - ![image](https://github.com/user-attachments/assets/7265dfcc-0de0-4aa6-a1e3-13cea4213e2c)
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- **Add to Cart Functionality:**
+  - When the "Add to Cart" button is clicked:
+    - The button temporarily changes its color for 1 second to indicate the product has been added to the cart.
+    - The cart icon in the header vibrates (or debounces) to provide visual feedback that an item has been added.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Product Details Modal:**
+  - The modal displays a larger image of the product along with detailed information.
+  - The modal also includes an "Add to Cart" button, allowing users to add the product directly from the modal.
+  - ![image](https://github.com/user-attachments/assets/3a39f7d2-d839-4fe8-9a0c-a5836129cb03)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 2. Cart Page
+![image](https://github.com/user-attachments/assets/bf2dde22-65fb-4783-ae1e-21dede2685a6)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Cart Items Listing:**
+  - The cart page displays all products that have been added to the cart.
+  - Each cart item includes:
+    - Product image
+    - Product name
+    - Product price
+    - Quantity selector (up/down buttons or input field) to adjust the quantity of each item
+    - A "Remove Item" button to delete a specific product from the cart.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- **Cart Summary:**
+  - The cart summary section calculates and displays:
+    - The subtotal of all items in the cart.
+    - The total price after applying any discounts (if applicable).
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Checkout Button:**
+  - A checkout button is available to simulate the checkout process or redirect to a checkout page.
 
-## Learn More
+## State Management with Redux
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Redux Store:**
+  - The application uses Redux to manage the global state, including the product list, cart items, and UI states.
+  
+- **Redux Thunk:**
+  - Asynchronous operations, such as API calls, are handled using Redux Thunk. This middleware allows for dispatching actions that return functions (thunks) instead of plain objects.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Redux Persist:**
+  - The application uses Redux Persist to automatically save the Redux store state to local storage, ensuring that the state persists across page reloads.
 
-### Code Splitting
+## API Calls with Axios
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Axios for API Requests:**
+  - Axios is used to handle HTTP requests to fetch product data and manage cart operations.
+  
+- **Axios Interceptors:**
+  - Axios interceptors are implemented to handle request and response transformations globally.
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
