@@ -45,18 +45,29 @@ const CartPage = () => {
 
   const subtotal = calculateSubtotal();
   const total = applyDiscount(subtotal);
+
   return (
     <>
-      {selectedItem && <ProductModal
-        product={selectedItem}
-        onAddToCart={handleQuantityChange}
-        onClose={() => { setSelectedItem(null);}}
-        showAddToCart={false}
-      />}
+      {selectedItem && (
+        <ProductModal
+          product={selectedItem}
+          onAddToCart={handleQuantityChange}
+          onClose={() => setSelectedItem(null)}
+          showAddToCart={false}
+        />
+      )}
       <div className="container mx-auto p-4 lg:p-8">
-        <h2 className="text-4xl font-extrabold text-gray-900 mb-8 text-center lg:text-left">
-          Your Shopping Cart
-        </h2>
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-4xl font-extrabold text-gray-900 lg:text-left">
+            Your Shopping Cart
+          </h2>
+          <button
+            onClick={() => navigate('/')}
+            className="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-full shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-200"
+          >
+            Return to Shopping
+          </button>
+        </div>
 
         {(!cartItems || cartItems.length === 0) ? (
           <EmptyCart onStartShopping={() => navigate('/')} />
@@ -80,10 +91,7 @@ const CartPage = () => {
         )}
       </div>
     </>
-
   );
-}
+};
 
 export default CartPage;
-
-
