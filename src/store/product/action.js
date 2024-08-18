@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../api-config/api';
 import {
   ADD_TO_CART,
   GET_CART_ITEM,
@@ -58,7 +58,7 @@ export const getCartItems = () => async (dispatch) => {
 
   try {
     const response = await axios.get(API_ENDPOINT_CART_LIST);
-    dispatch(getCartItemsSuccess(response.data));
+    dispatch(getCartItemsSuccess(response));
   } catch (error) {
     console.error('Error fetching cart items:', error);
   }
@@ -75,8 +75,8 @@ export const getProducts = (pageNumber=1) => async (dispatch) => {
   try {
     const response = await axios.get(url);
     console.log(response);
-    dispatch(getAvailableItemsSuccess(response.data));
-    return response.data;
+    dispatch(getAvailableItemsSuccess(response));
+    return response;
   } catch (error) {
     console.error('Error fetching products:', error);
   }
@@ -87,7 +87,7 @@ export const getSingleProduct = (id) =>async (dispatch) => {
   try {
     const response = await axios.get(url);
     console.log(response);
-    return response.data;
+    return response;
   } catch (error) {
     console.error('Error fetching products:', error);
   } 
