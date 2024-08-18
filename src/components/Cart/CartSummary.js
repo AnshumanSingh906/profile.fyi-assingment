@@ -15,7 +15,7 @@ const CartSummary = ({ subtotal, total }) => (
       Total: ${total.toFixed(2)}
     </h4>
     <button className="w-full mt-6 bg-blue-600 text-white rounded-lg py-3 text-lg font-semibold hover:bg-blue-700 transition-colors">
-      Proceed to Checkout
+      Checkout
     </button>
   </div>
 );

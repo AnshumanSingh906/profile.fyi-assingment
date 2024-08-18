@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 
 const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
-  const { id, title, price, description, images, discountPercentage } = product;
+  const { id, title, price, description, images, discountPercentage = 2 } = product;
   const [added, setAdded] = useState(false);
 
   const handleAddToCart = () => {
     onAddToCart(product);
     setAdded(true);
-    setTimeout(() => setAdded(false), 1000); // Reset after 1 seconds
+    setTimeout(() => setAdded(false), 1000); // Reset after 1 second
   };
 
   const handleViewDetails = () => {
@@ -17,8 +17,8 @@ const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
   return (
     <div className="relative mx-auto mt-8 w-60 transform overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg duration-300 hover:scale-105 hover:shadow-2xl">
       {/* Discount Badge */}
-      {discountPercentage && (
-        <div className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">
+      {discountPercentage > 0 && (
+        <div className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
           {discountPercentage}% OFF
         </div>
       )}
@@ -38,7 +38,7 @@ const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
         <p className="mb-2 text-sm text-gray-600 dark:text-gray-400 truncate">{description}</p>
         <div className="flex items-center space-x-2 mb-4">
           <p className="text-xl font-bold text-gray-900 dark:text-white">${price}</p>
-          {discountPercentage && (
+          {discountPercentage > 0 && (
             <p className="text-sm font-medium text-gray-500 line-through dark:text-gray-400">
               ${((price * 100) / (100 - discountPercentage)).toFixed(2)}
             </p>

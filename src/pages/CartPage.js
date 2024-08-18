@@ -57,7 +57,7 @@ const CartPage = () => {
         />
       )}
       <div className="container mx-auto p-4 lg:p-8">
-        <div className="flex items-center justify-between mb-8">
+        <div className="w-full flex items-center justify-between mb-8 bg-red shadow-md">
           <h2 className="text-4xl font-extrabold text-gray-900 lg:text-left">
             Your Shopping Cart
           </h2>

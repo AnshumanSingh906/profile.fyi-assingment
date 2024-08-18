@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-const ProductModal = ({ product, onAddToCart, onClose, showAddToCart=true }) => {
-  const { title, price, description, images, discountPercentage } = product;
+const ProductModal = ({ product, onAddToCart, onClose, showAddToCart = true }) => {
+  const { title, price, description, images, discountPercentage=2 } = product;
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const handleNextImage = () => {
@@ -31,6 +31,13 @@ const ProductModal = ({ product, onAddToCart, onClose, showAddToCart=true }) => 
         </button>
         <div className="flex flex-col md:flex-row">
           <div className="relative md:w-1/2">
+            {/* Discount Badge */}
+            {discountPercentage > 0 && (
+              <div className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-10">
+                {discountPercentage}% OFF
+              </div>
+            )}
+
             {/* Image Carousel */}
             <div className="relative">
               <img
@@ -77,18 +84,23 @@ const ProductModal = ({ product, onAddToCart, onClose, showAddToCart=true }) => 
             <p className="text-base text-gray-700 dark:text-gray-300 mb-4">{description}</p>
             <div className="flex items-center mb-4">
               <p className="text-2xl font-bold text-gray-900 dark:text-white">${price}</p>
-              {discountPercentage && (
+              {discountPercentage > 0 && (
                 <p className="text-sm font-medium text-gray-500 line-through dark:text-gray-400 ml-2">
                   ${((price * 100) / (100 - discountPercentage)).toFixed(2)}
                 </p>
               )}
             </div>
-            {showAddToCart && <button
-              className="w-full flex items-center justify-center rounded-lg py-2 px-4 bg-blue-600 text-white text-sm font-medium shadow-md transition-colors duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
-              onClick={() => {onAddToCart(product); onClose();} }
-            >
-              Add to Cart
-            </button>}
+            {showAddToCart && (
+              <button
+                className="w-full flex items-center justify-center rounded-lg py-2 px-4 bg-blue-600 text-white text-sm font-medium shadow-md transition-colors duration-300 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 dark:focus:ring-offset-gray-800"
+                onClick={() => {
+                  onAddToCart(product);
+                  onClose();
+                }}
+              >
+                Add to Cart
+              </button>
+            )}
           </div>
         </div>
       </div>
