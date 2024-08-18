@@ -1,8 +1,12 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
-const Header = ({ cartItemCount, onSearch }) => {
+const Header = ({ onSearch }) => {
   const navigate = useNavigate()
+
+  // Select cart items from Redux store
+  const cartItems = useSelector(state => state.product.cartItems);
 
   return (
     <header className="bg-white shadow-md p-4 flex justify-between items-center w-full">
@@ -17,7 +21,7 @@ const Header = ({ cartItemCount, onSearch }) => {
         <div className="relative cart-icon" onClick={()=>navigate('/cart-item')}>
           {/* Cart Icon with Item Count */}
           <div className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
-            {cartItemCount}
+            {cartItems && cartItems.length}
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
