@@ -5,18 +5,22 @@ import App from './App';
 import './index.css';
 import CartPage from './pages/CartPage';
 import { Provider } from 'react-redux';
-import store from './store/store'; // Import your Redux store
+import { PersistGate } from 'redux-persist/integration/react';
+import { store, persistor } from './store/store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/app/*" element={<App />} />
-        <Route path="/cart-item" element={<CartPage />} />
-        <Route path="*" element={<App />} />
-      </Routes>
-    </BrowserRouter>
+    <PersistGate loading={null} persistor={persistor}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/app/*" element={<App />} />
+          <Route path="/cart-item" element={<CartPage />} />
+          <Route path="*" element={<App />} />
+        </Routes>
+      </BrowserRouter>
+    </PersistGate>
+
   </Provider>
 );

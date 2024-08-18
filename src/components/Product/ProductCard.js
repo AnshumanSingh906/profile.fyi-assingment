@@ -7,7 +7,7 @@ const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
   const handleAddToCart = () => {
     onAddToCart(product);
     setAdded(true);
-    setTimeout(() => setAdded(false), 2000); // Reset after 2 seconds
+    setTimeout(() => setAdded(false), 1000); // Reset after 1 seconds
   };
 
   const handleViewDetails = () => {
@@ -15,7 +15,7 @@ const ProductCard = ({ product, onAddToCart, onViewDetails }) => {
   };
 
   return (
-    <div className="relative mx-auto mt-8 w-64 transform overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg duration-300 hover:scale-105 hover:shadow-2xl">
+    <div className="relative mx-auto mt-8 w-60 transform overflow-hidden rounded-xl bg-white dark:bg-gray-800 shadow-lg duration-300 hover:scale-105 hover:shadow-2xl">
       {/* Discount Badge */}
       {discountPercentage && (
         <div className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg">

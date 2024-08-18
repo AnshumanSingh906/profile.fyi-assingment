@@ -13,5 +13,5 @@ export const API_ENDPOINT_CART_SORT = `${API_BASE_URL}carts?sort={sort}`;
 export const API_ENDPOINT_CART_DATE_RANGE = `${API_BASE_URL}carts?startdate={startdate}&enddate={enddate}`;
 export const API_ENDPOINT_USER_CARTS = `${API_BASE_URL}carts/user/{userId}`;
 
-export const PAGE_LIMIT = 10;
+export const PAGE_LIMIT = 12;
 

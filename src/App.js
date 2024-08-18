@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductListingPage from './components/Product/ProductListingPage';
+import ProductListingPage from './pages/ProductListingPage';
 
 function App() {
   return (
